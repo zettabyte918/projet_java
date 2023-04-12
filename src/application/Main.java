@@ -5,6 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
 import java.sql.*;
+import java.util.Optional;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;;
 
 public class Main extends Application {
 	private Connection connect = null;
@@ -29,6 +34,7 @@ public class Main extends Application {
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

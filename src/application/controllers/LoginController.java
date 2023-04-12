@@ -1,13 +1,18 @@
 package application.controllers;
 
+import java.util.Optional;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -26,7 +31,6 @@ public class LoginController {
         try {
             // Close current window
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
 
             // Load profile.fxml and create new window
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/views/profile.fxml"));
@@ -41,10 +45,44 @@ public class LoginController {
             Stage profileStage = new Stage();
             profileStage.setScene(new Scene(root));
 
-            // Show profile window
-            profileStage.show();
+            // show dialog
+            this.showDialog(currentStage, profileStage, "27515642");
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void showAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Invalide code provided", ButtonType.OK,
+                ButtonType.CANCEL);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("yes");
+
+        } else {
+            System.out.println("no");
+        }
+
+    }
+
+    public void showDialog(Stage currentStage, Stage profileStage, String tel) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Input Dialog");
+        dialog.setHeaderText("Enter your confirmation code for " + tel + ":");
+        dialog.setContentText("Name:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            String name = result.get();
+            if (name.equals("123456")) {
+                profileStage.show();
+                currentStage.close();
+            } else {
+                this.showAlert();
+
+            }
+
         }
     }
 
