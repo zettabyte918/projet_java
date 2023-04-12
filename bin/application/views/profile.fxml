@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ProfileController" stylesheets="@application.css">
 	<children>
 		<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b4d8f8" height="400.0" layoutX="-3.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 
@@ -29,8 +29,8 @@
 								<Spinner editable="true" layoutX="462.0" layoutY="87.0" prefHeight="24.0" prefWidth="124.0" />
 								<Spinner layoutX="462.0" layoutY="163.0" prefHeight="24.0" prefWidth="124.0" />
 								<Spinner editable="true" layoutX="462.0" layoutY="127.0" prefHeight="24.0" prefWidth="124.0" />
-								<Button layoutX="284.0" layoutY="244.0" mnemonicParsing="false" text="valider" />
-								<Button layoutX="410.0" layoutY="244.0" mnemonicParsing="false" text="annuler" />
+								<Button styleClass="success" layoutX="284.0" layoutY="244.0" mnemonicParsing="false" text="valider" />
+								<Button styleClass="danger" layoutX="410.0" layoutY="244.0" mnemonicParsing="false" text="annuler" />
                         <Label fx:id="usernameL" layoutX="167.0" layoutY="113.0" text="username" />
                         <Label fx:id="roleL" layoutX="176.0" layoutY="139.0" text="role" />
 							</children>

@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
-import javafx.scene.layout.BorderPane;
 import java.sql.*;
 
 public class Main extends Application {
@@ -24,11 +23,10 @@ public class Main extends Application {
 			while (rs.next())
 				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
 			con.close();
-			System.out.println("hh");
 
-			Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/views/login.fxml"));
 			Scene scene = new Scene(root, 600, 400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

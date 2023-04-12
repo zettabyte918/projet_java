@@ -1,4 +1,4 @@
-package application;
+package application.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +29,7 @@ public class LoginController {
             currentStage.close();
 
             // Load profile.fxml and create new window
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/profile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/views/profile.fxml"));
             Parent root = loader.load();
 
             // Get the controller associated with the profile.fxml file
