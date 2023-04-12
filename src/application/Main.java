@@ -1,15 +1,10 @@
 package application;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
 import javafx.stage.Stage;
 import java.sql.*;
-import java.util.Optional;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Alert.AlertType;;
+import application.utils.Utils;
 
 public class Main extends Application {
 	private Connection connect = null;
@@ -29,11 +24,7 @@ public class Main extends Application {
 				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
 			con.close();
 
-			Parent root = FXMLLoader.load(getClass().getResource("/application/views/login.fxml"));
-			Scene scene = new Scene(root, 600, 400);
-
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			Utils.navigateTo(primaryStage, "login");
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,6 +2,7 @@ package application.controllers;
 
 import java.util.Optional;
 
+import application.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,20 +34,19 @@ public class LoginController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Load profile.fxml and create new window
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/views/profile.fxml"));
-            Parent root = loader.load();
+            // FXMLLoader loader = new
+            // FXMLLoader(getClass().getResource("/application/views/profile.fxml"));
+            // Parent root = loader.load();
+            boolean isSuccess = this.showDialog(currentStage, "27515642");
 
-            // Get the controller associated with the profile.fxml file
-            ProfileController profileController = loader.getController();
+            if (isSuccess) {
+                ProfileController profileController = Utils.navigateTo(currentStage, "profile");
 
-            // Set the values of username and role in the ProfileController
-            profileController.setUser("john", "Adminn"); // Example username value
-
-            Stage profileStage = new Stage();
-            profileStage.setScene(new Scene(root));
+                // Set the values of username and role in the ProfileController
+                profileController.setUser("john", "Adminn"); // Example username value
+            }
 
             // show dialog
-            this.showDialog(currentStage, profileStage, "27515642");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,24 +66,26 @@ public class LoginController {
 
     }
 
-    public void showDialog(Stage currentStage, Stage profileStage, String tel) {
+    public boolean showDialog(Stage currentStage, String tel) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Dialog");
         dialog.setHeaderText("Enter your confirmation code for " + tel + ":");
-        dialog.setContentText("Name:");
+        dialog.setContentText("Code:");
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             String name = result.get();
             if (name.equals("123456")) {
-                profileStage.show();
                 currentStage.close();
+                return true;
             } else {
                 this.showAlert();
-
+                return false;
             }
 
         }
+
+        return false;
     }
 
 }
